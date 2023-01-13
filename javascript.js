@@ -1,4 +1,5 @@
-function getComputerChoice ([input]) {
+
+function getComputerChoice (input) {
   let computerSelection = possibleChoices[Math.floor(Math.random() * possibleChoices.length)];
   return computerSelection
 }
@@ -27,9 +28,12 @@ function playRound(playerSelection, computerSelection) {
     return "You win! Scissors beats paper!"
   }
 }
- 
+
+const possibleChoices = ["rock", "paper", "scissors"];
+
 const playerSelection = "rock";
 const computerSelection = getComputerChoice();
-const possibleChoices = ["Rock", "Paper", "Scissors"];
 
+console.log(playerSelection)
+console.log(computerSelection)
 console.log(playRound(playerSelection, computerSelection));
