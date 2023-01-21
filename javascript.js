@@ -37,9 +37,8 @@ function game () {
   for (let i = 0; i < 5; i++) {
     let playerSelection = "rock";
     let computerSelection = getComputerChoice;
-    console.log(getComputerChoice())
-
     let result = playRound(playerSelection, computerSelection())
+    console.log(result)
     return result
   
   }
