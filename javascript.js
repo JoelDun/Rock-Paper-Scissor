@@ -37,11 +37,10 @@ function game () {
   for (let i = 0; i < 5; i++) {
     let playerSelection = "rock";
     let computerSelection = getComputerChoice;
-    let result = playRound(playerSelection, computerSelection())
+    let result = playRound(playerSelection, computerSelection(i))
     console.log(result)
-    return result
-  
   }
+  
 }
 
 console.log(game())
