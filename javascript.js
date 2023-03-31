@@ -1,60 +1,62 @@
-
-function getComputerChoice () {
-  let computerSelection = possibleChoices[Math.floor(Math.random() * possibleChoices.length)];
-  return computerSelection
-}
-
-let winCount = 0;
-let loseCount = 0;
-let drawCount = 0;
-
 const possibleChoices = ["rock", "paper", "scissors"];
 
-function playRound (playerSelection, computerSelection) {
-  if (playerSelection == "rock" && computerSelection == "paper") {
-    loseCount++
-    return "You lose! Paper beats rock!" 
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+const playerScoreDisplay = document.getElementById("player-score");
+const computerScoreDisplay = document.getElementById("computer-score");
+const resultDisplay = document.getElementById("result");
+const reloadButton = document.getElementById("reload");
+
+let playerScore = 0;
+let computerScore = 0;
+
+function getComputerChoice() {
+  return possibleChoices[Math.floor(Math.random() * possibleChoices.length)];
+}
+
+function playRound(playerSelection) {
+  const computerSelection = getComputerChoice();
+
+  if (playerSelection === computerSelection) {
+    resultDisplay.textContent = `Draw! Both chose ${playerSelection}.`;
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    playerScore++;
+    resultDisplay.textContent = `You win! ${playerSelection} beats ${computerSelection}.`;
+  } else {
+    computerScore++;
+    resultDisplay.textContent = `You lose! ${computerSelection} beats ${playerSelection}.`;
   }
-  if (playerSelection == "paper" && computerSelection == "scissors") {
-    loseCount++
-    return "You lose! Scissors beats paper!"
-   }
-  if (playerSelection == "scissors" && computerSelection == "rock" ) {
-    loseCount++
-    return "You lose! Rock beats scissors!"
-  }
-  if (playerSelection == "rock" && computerSelection == "scissors") {
-    winCount++
-    return "You win! Rock beats scissors!"
-  }
-  if (playerSelection == "paper" && computerSelection == "rock") {
-    winCount++
-    return "You win! Paper beats rock!"
-  }
-  if (playerSelection == "scissors" && computerSelection == "paper") {
-    winCount++
-    return "You win! Scissors beats paper!"
-  }
-  else {
-    drawCount++
-    return "Draw!"
+
+  updateScore();
+  checkForGameOver();
+}
+
+function updateScore() {
+  playerScoreDisplay.textContent = playerScore;
+  computerScoreDisplay.textContent = computerScore;
+}
+
+function checkForGameOver() {
+  if (playerScore === 5 || computerScore === 5) {
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
+    reloadButton.style.display = "block";
+
+    if (playerScore > computerScore) {
+      resultDisplay.textContent = `You win the game! Score: ${playerScore}-${computerScore}`;
+    } else {
+      resultDisplay.textContent = `You lose the game! Score: ${playerScore}-${computerScore}`;
+    }
   }
 }
 
-function game () {
-  let result = ""
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = "rock";
-    let computerSelection = getComputerChoice;
-    result = playRound(playerSelection, computerSelection(i))
-  }
-  if (winCount > loseCount) {
-    return "You win with a score of " + winCount + " to " + loseCount + "!"
-  }
-  else {
-    return "You lose with a score of " + loseCount + " to " + winCount + "!"
-  }
-
-}
-
-console.log(game())
+rock.addEventListener("click", () => playRound("rock"));
+paper.addEventListener("click", () => playRound("paper"));
+scissors.addEventListener("click", () => playRound("scissors"));
+reloadButton.addEventListener("click", () => window.location.reload());
