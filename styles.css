@@ -1,101 +1,93 @@
-/* styles.css */
-/* universal selector - Applies to whole document */
-*{
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-	background: #082c6c;
-	color: #fff;
-}
-/* To center everything in game */
-.game{
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
-	width: 100vw;
-	justify-content: center;
-	align-items: center;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Title of the game */
-.title{
-	position: absolute;
-	top: 0;
-	font-size: 4rem;
-	z-index: 2;
+body {
+  background: #1e1e1e;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
-/* Score Board */
-.score{
-	display: flex;
-	width: 30vw;
-	justify-content: space-evenly;
-	position: absolute;
-	top: 70px;
-	z-index: 1;
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 500px;
 }
 
-/* Score */
-.p-count,.c-count{
-	text-align: center;
-	font-size: 1.5rem;
-	margin-top: 1rem;
+.title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* displaying three buttons in one line */
-.options{
-	display: flex;
-	width: 50vw;
-	justify-content: space-evenly;
-	margin-top: 2rem;
+.score {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-/* Styling on all three buttons */
-.rock, .paper, .scissor{
-	padding: 0.8rem;
-	width: 100px;
-	border-radius: 10px;
-	background: green;
-	outline: none;
-	border-color: green;
-	border: none;
-	cursor: pointer;
+.p-count,
+.c-count {
+  font-size: 1.5rem;
 }
 
-.move{
-	font-size: 2rem;
-	font-weight: bold;
+.options {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-/* Reload button style */
+.rock,
+.paper,
+.scissor {
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: #3f3f3f;
+  border: 2px solid #7f7f7f;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.rock:hover,
+.paper:hover,
+.scissor:hover {
+  background: #7f7f7f;
+  border-color: #3f3f3f;
+}
+
+.result {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
 .reload {
-	display: none;
-	margin-top: 2rem;
-	padding: 1rem;
-	background: green;
-	outline: none;
-	border: none;
-	border-radius: 10px;
-	cursor: pointer;
+  display: none;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: #3f3f3f;
+  border: 2px solid #7f7f7f;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.result{
-	margin-top: 20px;
-	font-size: 1.2rem;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 612px)
-{
-	.title{
-		text-align: center;
-	}
-	.score{
-		position: absolute;
-		top: 200px;
-		width: 100vw;
-	}
-	.options{
-		width: 100vw;
-	}
+.reload:hover {
+  background: #7f7f7f;
+  border-color: #3f3f3f;
 }
