@@ -91,3 +91,22 @@ body {
   background: #7f7f7f;
   border-color: #3f3f3f;
 }
+
+.history {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.history h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+#game-history-list {
+  list-style-type: none;
+}
+
+#game-history-list li {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}

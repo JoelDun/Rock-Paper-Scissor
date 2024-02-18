@@ -7,6 +7,7 @@ const playerScoreDisplay = document.getElementById("player-score");
 const computerScoreDisplay = document.getElementById("computer-score");
 const resultDisplay = document.getElementById("result");
 const reloadButton = document.getElementById("reload");
+const gameHistoryList = document.getElementById("game-history-list");
 
 let playerScore = 0;
 let computerScore = 0;
@@ -34,6 +35,11 @@ function playRound(playerSelection) {
 
   updateScore();
   checkForGameOver();
+  
+const historyEntry = document.createElement("li");
+historyEntry.textContent = `Round Result: Player chose ${playerSelection}, Computer chose ${computerSelection}. ${resultDisplay.textContent}`;
+gameHistoryList.appendChild(historyEntry);
+
 }
 
 function updateScore() {
